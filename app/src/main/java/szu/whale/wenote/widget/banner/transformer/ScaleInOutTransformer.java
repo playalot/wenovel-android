@@ -1,4 +1,4 @@
-package szu.whale.wenote.banner.transformer;
+package szu.whale.wenote.widget.banner.transformer;
 
 import android.view.View;
 

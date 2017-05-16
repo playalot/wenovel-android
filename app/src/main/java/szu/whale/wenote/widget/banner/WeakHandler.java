@@ -1,4 +1,4 @@
-package szu.whale.wenote.banner;
+package szu.whale.wenote.widget.banner;
 
 import android.os.Handler;
 import android.os.Looper;

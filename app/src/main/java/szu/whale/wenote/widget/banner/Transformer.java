@@ -1,19 +1,19 @@
-package szu.whale.wenote.banner;
+package szu.whale.wenote.widget.banner;
 
 import android.support.v4.view.ViewPager.PageTransformer;
 
 import com.hyx.whale.wenote.banner.transformer.AccordionTransformer;
-import com.hyx.whale.wenote.banner.transformer.CubeOutTransformer;
-import com.hyx.whale.wenote.banner.transformer.DefaultTransformer;
-import com.hyx.whale.wenote.banner.transformer.ScaleInOutTransformer;
 import com.hyx.whale.wenote.banner.transformer.BackgroundToForegroundTransformer;
 import com.hyx.whale.wenote.banner.transformer.CubeInTransformer;
+import com.hyx.whale.wenote.banner.transformer.CubeOutTransformer;
+import com.hyx.whale.wenote.banner.transformer.DefaultTransformer;
 import com.hyx.whale.wenote.banner.transformer.DepthPageTransformer;
 import com.hyx.whale.wenote.banner.transformer.FlipHorizontalTransformer;
 import com.hyx.whale.wenote.banner.transformer.FlipVerticalTransformer;
 import com.hyx.whale.wenote.banner.transformer.ForegroundToBackgroundTransformer;
 import com.hyx.whale.wenote.banner.transformer.RotateDownTransformer;
 import com.hyx.whale.wenote.banner.transformer.RotateUpTransformer;
+import com.hyx.whale.wenote.banner.transformer.ScaleInOutTransformer;
 import com.hyx.whale.wenote.banner.transformer.StackTransformer;
 import com.hyx.whale.wenote.banner.transformer.TabletTransformer;
 import com.hyx.whale.wenote.banner.transformer.ZoomInTransformer;

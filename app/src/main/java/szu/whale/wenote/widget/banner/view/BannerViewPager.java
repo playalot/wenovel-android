@@ -1,4 +1,4 @@
-package szu.whale.wenote.banner.view;
+package szu.whale.wenote.widget.banner.view;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

@@ -14,23 +14,16 @@
  * limitations under the License.
  */
 
-package szu.whale.wenote.banner.transformer;
+package szu.whale.wenote.widget.banner.transformer;
 
 import android.view.View;
 
-public class ForegroundToBackgroundTransformer extends ABaseTransformer {
+public class AccordionTransformer extends ABaseTransformer {
 
 	@Override
 	protected void onTransform(View view, float position) {
-		final float height = view.getHeight();
-		final float width = view.getWidth();
-		final float scale = min(position > 0 ? 1f : Math.abs(1f + position), 0.5f);
-
-		view.setScaleX(scale);
-		view.setScaleY(scale);
-		view.setPivotX(width * 0.5f);
-		view.setPivotY(height * 0.5f);
-		view.setTranslationX(position > 0 ? width * position : -width * position * 0.25f);
+		view.setPivotX(position < 0 ? 0 : view.getWidth());
+		view.setScaleX(position < 0 ? 1f + position : 1f - position);
 	}
 
 }

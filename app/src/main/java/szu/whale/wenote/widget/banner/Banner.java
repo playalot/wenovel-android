@@ -1,4 +1,4 @@
-package szu.whale.wenote.banner;
+package szu.whale.wenote.widget.banner;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -20,9 +20,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.hyx.whale.whalenote.R;
 import com.hyx.whale.wenote.banner.view.BannerViewPager;
 import com.hyx.whale.wenote.imageloader.ImageLoaderManager;
+import com.hyx.whale.whalenote.R;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

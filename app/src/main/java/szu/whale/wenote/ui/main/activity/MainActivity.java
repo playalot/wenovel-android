@@ -1,11 +1,15 @@
 package szu.whale.wenote.ui.main.activity;
 
-import com.hyx.whale.wenote.base.BaseActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
-/**
- * Created by Administrator on 2017/3/20 0020.
- */
+import szu.whale.wenote.R;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AppCompatActivity {
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
 }

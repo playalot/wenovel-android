@@ -14,30 +14,28 @@
  * limitations under the License.
  */
 
-package szu.whale.wenote.banner.transformer;
+package szu.whale.wenote.widget.banner.transformer;
 
 import android.view.View;
 
-public class FlipVerticalTransformer extends ABaseTransformer {
+public class RotateUpTransformer extends ABaseTransformer {
+
+	private static final float ROT_MOD = -15f;
 
 	@Override
 	protected void onTransform(View view, float position) {
-		final float rotation = -180f * position;
+		final float width = view.getWidth();
+		final float rotation = ROT_MOD * position;
 
-		view.setAlpha(rotation > 90f || rotation < -90f ? 0f : 1f);
-		view.setPivotX(view.getWidth() * 0.5f);
-		view.setPivotY(view.getHeight() * 0.5f);
-		view.setRotationX(rotation);
+		view.setPivotX(width * 0.5f);
+		view.setPivotY(0f);
+		view.setTranslationX(0f);
+		view.setRotation(rotation);
 	}
-
+	
 	@Override
-	protected void onPostTransform(View page, float position) {
-		super.onPostTransform(page, position);
-
-		if (position > -0.5f && position < 0.5f) {
-			page.setVisibility(View.VISIBLE);
-		} else {
-			page.setVisibility(View.INVISIBLE);
-		}
+	protected boolean isPagingEnabled() {
+		return true;
 	}
+
 }
