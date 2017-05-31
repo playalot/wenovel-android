@@ -20,13 +20,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.hyx.whale.wenote.banner.view.BannerViewPager;
-import com.hyx.whale.wenote.imageloader.ImageLoaderManager;
-import com.hyx.whale.whalenote.R;
-
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+
+import szu.whale.wenote.R;
+import szu.whale.wenote.imageloader.ImageLoader;
+import szu.whale.wenote.widget.banner.view.BannerViewPager;
 
 import static android.support.v4.view.ViewPager.OnPageChangeListener;
 import static android.support.v4.view.ViewPager.PageTransformer;
@@ -44,7 +44,7 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
     private boolean isScroll = BannerConfig.IS_SCROLL;
     private int mIndicatorSelectedResId = R.drawable.gray_radius;
     private int mIndicatorUnselectedResId = R.drawable.white_radius;
-    private int mLayoutResId = R.layout.layout_banner;
+    private int mLayoutResId = R.layout.banner;
     private int titleHeight;
     private int titleBackground;
     private int titleTextColor;
@@ -343,7 +343,7 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
                 url = imagesUrl.get(i - 1);
             }
             imageViews.add(imageView);
-            ImageLoaderManager.getRequest().display((ImageView) imageView ,(String) url);
+            ImageLoader.getRequest().display((ImageView) imageView ,(String) url);
         }
     }
 

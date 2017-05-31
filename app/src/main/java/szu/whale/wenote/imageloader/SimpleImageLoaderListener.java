@@ -5,11 +5,11 @@ import android.view.View;
 
 /**
  * description:
- * author：xujianye
+ * author：whale
  * date: 2017/2/14 0014 15:07
- * email：jianyexu@hyx.com
+ * email：whale@hyx.com
  */
-public class SimpleImageListener implements ImageListener {
+public class SimpleImageLoaderListener implements ImageLoaderListener {
 
     @Override
     public void onLoadingStarted(String imageUri, View view) {

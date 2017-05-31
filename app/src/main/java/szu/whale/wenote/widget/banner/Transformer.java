@@ -2,23 +2,23 @@ package szu.whale.wenote.widget.banner;
 
 import android.support.v4.view.ViewPager.PageTransformer;
 
-import com.hyx.whale.wenote.banner.transformer.AccordionTransformer;
-import com.hyx.whale.wenote.banner.transformer.BackgroundToForegroundTransformer;
-import com.hyx.whale.wenote.banner.transformer.CubeInTransformer;
-import com.hyx.whale.wenote.banner.transformer.CubeOutTransformer;
-import com.hyx.whale.wenote.banner.transformer.DefaultTransformer;
-import com.hyx.whale.wenote.banner.transformer.DepthPageTransformer;
-import com.hyx.whale.wenote.banner.transformer.FlipHorizontalTransformer;
-import com.hyx.whale.wenote.banner.transformer.FlipVerticalTransformer;
-import com.hyx.whale.wenote.banner.transformer.ForegroundToBackgroundTransformer;
-import com.hyx.whale.wenote.banner.transformer.RotateDownTransformer;
-import com.hyx.whale.wenote.banner.transformer.RotateUpTransformer;
-import com.hyx.whale.wenote.banner.transformer.ScaleInOutTransformer;
-import com.hyx.whale.wenote.banner.transformer.StackTransformer;
-import com.hyx.whale.wenote.banner.transformer.TabletTransformer;
-import com.hyx.whale.wenote.banner.transformer.ZoomInTransformer;
-import com.hyx.whale.wenote.banner.transformer.ZoomOutSlideTransformer;
-import com.hyx.whale.wenote.banner.transformer.ZoomOutTranformer;
+import szu.whale.wenote.widget.banner.transformer.AccordionTransformer;
+import szu.whale.wenote.widget.banner.transformer.BackgroundToForegroundTransformer;
+import szu.whale.wenote.widget.banner.transformer.CubeInTransformer;
+import szu.whale.wenote.widget.banner.transformer.CubeOutTransformer;
+import szu.whale.wenote.widget.banner.transformer.DefaultTransformer;
+import szu.whale.wenote.widget.banner.transformer.DepthPageTransformer;
+import szu.whale.wenote.widget.banner.transformer.FlipHorizontalTransformer;
+import szu.whale.wenote.widget.banner.transformer.FlipVerticalTransformer;
+import szu.whale.wenote.widget.banner.transformer.ForegroundToBackgroundTransformer;
+import szu.whale.wenote.widget.banner.transformer.RotateDownTransformer;
+import szu.whale.wenote.widget.banner.transformer.RotateUpTransformer;
+import szu.whale.wenote.widget.banner.transformer.ScaleInOutTransformer;
+import szu.whale.wenote.widget.banner.transformer.StackTransformer;
+import szu.whale.wenote.widget.banner.transformer.TabletTransformer;
+import szu.whale.wenote.widget.banner.transformer.ZoomInTransformer;
+import szu.whale.wenote.widget.banner.transformer.ZoomOutSlideTransformer;
+import szu.whale.wenote.widget.banner.transformer.ZoomOutTranformer;
 
 
 public class Transformer {

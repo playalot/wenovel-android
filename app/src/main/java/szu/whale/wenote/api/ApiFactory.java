@@ -7,4 +7,5 @@ package szu.whale.wenote.api;
  * version :1.0.
  */
 public class ApiFactory {
+
 }
