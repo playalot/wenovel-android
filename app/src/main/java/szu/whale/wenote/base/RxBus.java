@@ -10,9 +10,6 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import io.reactivex.Flowable;
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import io.reactivex.processors.FlowableProcessor;
 import io.reactivex.processors.PublishProcessor;
 
@@ -39,25 +36,8 @@ public class RxBus {
     }
 
 
-    //每一种tag类型有一个同种类型事件的lsit
+    //每一种tag类型有一个同种tag类型事件的lsit
     private ConcurrentHashMap<Object , List<Processor>> processorMapper = new ConcurrentHashMap<>();
-
-    /**
-     * 订阅事件源
-     *
-     * @param mObservable
-     * @param mAction1
-     * @return
-     */
-    public RxBus onEvent(Observable<?> mObservable , Consumer<Object> mAction1){
-        mObservable.observeOn(AndroidSchedulers.mainThread()).subscribe(mAction1, new Consumer<Throwable>() {
-            @Override
-            public void accept(Throwable throwable) {
-                throwable.printStackTrace();
-            }
-        });
-        return getInstance();
-    }
 
 
     /**
@@ -89,7 +69,7 @@ public class RxBus {
 
     /**
      * 触发事件
-     * 遍历全部相同tag事件的list，然后将相同的时间全部post出去，利用subject的一些有用的特性，例如可以构造一个无发送事件的observable
+     * 遍历全部相同tag事件的list，然后将相同的事件全部post出去，利用subject的一些有用的特性，例如可以构造一个无发送事件的observable
      * @param content
      */
     public void post(@NonNull Object tag,@NonNull Object content){

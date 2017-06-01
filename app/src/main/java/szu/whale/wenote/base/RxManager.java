@@ -12,6 +12,9 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
 /**
+ *
+ * 这里不用单例模式的原因是.
+ * RxManager是用来管理某一个activity或则fragment中的所有rxjava流程代码，如果用单例的话clear的时候需要按照不同的tag来清除相应的rxManager
  * funtion :用于管理单个presenter的rxbus事件和rxjava相关代码的生命周期处理。
  * author  :smallbluewhale.
  * date    :2017/4/5 0005.
@@ -31,10 +34,10 @@ public class RxManager {
     * Rxbus注入监听
     * */
     public <T> void onEvent(String eventName , Consumer<T> action1){
-        Flowable<T>observable = mRxbus.register(eventName);
-        mObservableMap.put(eventName,observable);
+        Flowable<T>flowable = mRxbus.register(eventName);
+        mObservableMap.put(eventName,flowable);
         /*订阅管理*/
-        compositeDisposable.add(observable.observeOn(AndroidSchedulers.mainThread())
+        compositeDisposable.add(flowable.observeOn(AndroidSchedulers.mainThread())
                 .subscribe(action1, new Consumer<Throwable>() {
             @Override
             public void accept(Throwable throwable) {
@@ -61,6 +64,12 @@ public class RxManager {
             mRxbus.unRegister(entry.getKey(),entry.getValue());
         }
         
+    }
+    /*
+    * 发送信息
+    * */
+    public void post(Object tag , Object content){
+        mRxbus.post(tag , content);
     }
 
 }
