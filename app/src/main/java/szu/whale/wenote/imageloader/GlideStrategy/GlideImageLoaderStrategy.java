@@ -1,4 +1,4 @@
-package szu.whale.wenote.imageloader;
+package szu.whale.wenote.imageloader.GlideStrategy;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -19,6 +19,9 @@ import com.bumptech.glide.request.target.Target;
 import java.io.File;
 
 import szu.whale.wenote.R;
+import szu.whale.wenote.imageloader.BaseImageLoaderStrategy;
+import szu.whale.wenote.imageloader.ImageLoaderListener;
+import szu.whale.wenote.imageloader.ImageSaveListener;
 
 /**
  * description:
@@ -226,6 +229,8 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy {
     }
 
 
+
+    @Override
     public void trimMemory(Context context , int level){
         Glide.get(context).trimMemory(level);
     }

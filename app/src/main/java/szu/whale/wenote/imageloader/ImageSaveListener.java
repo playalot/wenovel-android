@@ -6,7 +6,7 @@ package szu.whale.wenote.imageloader;
  * date    :2017/5/31 0031.
  * version :1.0.
  */
-interface ImageSaveListener {
+public interface ImageSaveListener {
     void onSaveFail();
     void onSaveSuccess();
 }

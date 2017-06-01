@@ -1,4 +1,4 @@
-package szu.whale.wenote.imageloader;
+package szu.whale.wenote.imageloader.GlideStrategy;
 
 import android.content.Context;
 import android.os.Environment;
@@ -16,15 +16,15 @@ import java.io.File;
 
 /**
  * description: 自定义GlideMode需在AndroidManifest.xml文件中配置，否则将不生效, 配置如下
- * <meta-data android:name="com.hyx.baselibrary.Utils.ImageLoader.GlideCache"
-              android:value="GlideModule"/>
+ <meta-data android:name="szu.whale.wenote.imageloader.ImageCache"
+ android:value="GlideModule"/>
  * author：whale
  * date: 2017/2/16 0016 09:59
  * email：whale@hyx.com
  */
 public class GlideCache implements GlideModule {
 
-    private static final String CACHE_PATH = "/maizuo/GlideCache";
+    private static final String CACHE_PATH = "/maizuo/imagecache";
     private static final int CACHE_SIZE = 50; // 50M
 
     @Override
@@ -51,7 +51,6 @@ public class GlideCache implements GlideModule {
         // 设置缓存大小
         builder.setMemoryCache(new LruResourceCache(customMemoryCacheSize));
         builder.setBitmapPool(new LruBitmapPool(customBitmapPoolSize));
-
     }
 
     @Override

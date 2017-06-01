@@ -121,4 +121,11 @@ public interface BaseImageLoaderStrategy {
      * @param context
      */
     void saveImage(Context context , String url , String filePath , String fileName , ImageSaveListener imageSaveListener);
+
+    /**
+     * 清除内存缓存
+     * @param context
+     */
+    void trimMemory(Context context , int level);
+
 }

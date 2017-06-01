@@ -2,16 +2,20 @@ package szu.whale.wenote.base;
 
 import android.support.annotation.NonNull;
 
+import org.reactivestreams.Processor;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.subjects.PublishSubject;
-import rx.subjects.Subject;
+import io.reactivex.Flowable;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.processors.FlowableProcessor;
+import io.reactivex.processors.PublishProcessor;
+
 
 /**
  * funtion :用rxbus和rxandroid实现的一个事件监听的类
@@ -22,8 +26,7 @@ import rx.subjects.Subject;
 public class RxBus {
     private static RxBus instance;
 
-
-    RxBus(){
+    private RxBus(){
 
     }
     public static RxBus getInstance(){
@@ -37,7 +40,7 @@ public class RxBus {
 
 
     //每一种tag类型有一个同种类型事件的lsit
-    private ConcurrentHashMap<Object , List<Subject>> subjectMapper = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<Object , List<Processor>> processorMapper = new ConcurrentHashMap<>();
 
     /**
      * 订阅事件源
@@ -46,10 +49,10 @@ public class RxBus {
      * @param mAction1
      * @return
      */
-    public RxBus onEvent(Observable<?> mObservable , Action1<Object> mAction1){
-        mObservable.observeOn(AndroidSchedulers.mainThread()).subscribe(mAction1, new Action1<Throwable>() {
+    public RxBus onEvent(Observable<?> mObservable , Consumer<Object> mAction1){
+        mObservable.observeOn(AndroidSchedulers.mainThread()).subscribe(mAction1, new Consumer<Throwable>() {
             @Override
-            public void call(Throwable throwable) {
+            public void accept(Throwable throwable) {
                 throwable.printStackTrace();
             }
         });
@@ -64,15 +67,15 @@ public class RxBus {
      * @param tag
      * @return
      */
-    public <T> Observable<T> register(@NonNull Object tag){
-        List<Subject> subjectList = subjectMapper.get(tag);
-        if(null == subjectList){
-            subjectList = new ArrayList<>();
-            subjectMapper.put(tag,subjectList);
+    public <T> Flowable<T> register(@NonNull Object tag){
+        List<Processor> processorList = processorMapper.get(tag);
+        if(null == processorList){
+            processorList = new ArrayList<>();
+            processorMapper.put(tag,processorList);
         }
-        Subject<T,T> subject = PublishSubject.create();
-        subjectList.add(subject);
-        return subject;
+        FlowableProcessor<T> processor = PublishProcessor.create();
+        processorList.add(processor);
+        return processor;
     }
 
     /*
@@ -90,11 +93,11 @@ public class RxBus {
      * @param content
      */
     public void post(@NonNull Object tag,@NonNull Object content){
-        List<Subject> subjectList = subjectMapper.get(tag);
-        if(!isEmpty(subjectList)){
-            for (Subject subject :
-                    subjectList) {
-                subject.onNext(content);
+        List<Processor> processorList = processorMapper.get(tag);
+        if(!isEmpty(processorList)){
+            for (Processor processor :
+                    processorList) {
+                processor.onNext(content);
             }
 
         }
@@ -105,9 +108,9 @@ public class RxBus {
      * @param content
      */
     public void unRegister(@NonNull Object content){
-        List<Subject> subjectList = subjectMapper.get(content);
-        if(null != subjectList){
-            subjectMapper.remove(content);
+        List<Processor> processorList = processorMapper.get(content);
+        if(null != processorList){
+            processorMapper.remove(content);
         }
     }
 
@@ -115,25 +118,25 @@ public class RxBus {
      * 取消监听
      *
      * @param tag
-     * @param observable
+     * @param flowable
      * @return
      */
-    public RxBus unRegister(@NonNull Object tag , @NonNull Observable<?>observable){
-        if(null == observable){
+    public RxBus unRegister(@NonNull Object tag , @NonNull Flowable<?>flowable){
+        if(null == flowable){
             getInstance();
         }
-        List<Subject> subjectList = subjectMapper.get(tag);
-        if(null != subjectList){
-            subjectList.remove((Subject<?,?>)observable);
-            if(isEmpty(subjectList)){
-                subjectMapper.remove(tag);
+        List<Processor> processorList = processorMapper.get(tag);
+        if(null != processorList){
+            processorList.remove((Processor)flowable);
+            if(isEmpty(processorList)){
+                processorMapper.remove(tag);
             }
         }
         return getInstance();
     }
 
     @SuppressWarnings("rawtypes")
-    public static boolean isEmpty(Collection<Subject> collection) {
+    public static boolean isEmpty(Collection<Processor> collection) {
         return null == collection || collection.isEmpty();
     }
 

@@ -1,4 +1,4 @@
-package szu.whale.wenote.imageloader;
+package szu.whale.wenote.imageloader.GlideStrategy;
 
 import android.content.Context;
 import android.content.res.Resources;

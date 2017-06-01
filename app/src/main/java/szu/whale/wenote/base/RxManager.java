@@ -1,13 +1,15 @@
 package szu.whale.wenote.base;
 
+
+
 import java.util.HashMap;
 import java.util.Map;
 
-import rx.Observable;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.Flowable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 /**
  * funtion :用于管理单个presenter的rxbus事件和rxjava相关代码的生命周期处理。
@@ -18,25 +20,25 @@ import rx.subscriptions.CompositeSubscription;
 public class RxManager {
     public RxBus mRxbus = RxBus.getInstance();
     //管理rxbus订阅的map
-    private Map<String, Observable<?>> mObservableMap = new HashMap<>();
+    private Map<String, Flowable<?>> mObservableMap = new HashMap<>();
     /*
     * 管理Observable和Subscribe订阅
     * 取消以及注册订阅
     * */
-    private CompositeSubscription compositeSubscription = new CompositeSubscription();
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     /*
     * Rxbus注入监听
     * */
-    public <T> void onEvent(String eventName , Action1<T> action1){
-        Observable<T>observable = mRxbus.register(eventName);
+    public <T> void onEvent(String eventName , Consumer<T> action1){
+        Flowable<T>observable = mRxbus.register(eventName);
         mObservableMap.put(eventName,observable);
         /*订阅管理*/
-        compositeSubscription.add(observable.observeOn(AndroidSchedulers.mainThread())
-                .subscribe(action1, new Action1<Throwable>() {
+        compositeDisposable.add(observable.observeOn(AndroidSchedulers.mainThread())
+                .subscribe(action1, new Consumer<Throwable>() {
             @Override
-            public void call(Throwable throwable) {
-                
+            public void accept(Throwable throwable) {
+
             }
         }));
     }
@@ -44,9 +46,9 @@ public class RxManager {
     /*
     * 单纯的obserables和subscribers管理
     * */
-    public void add(Subscription subscription){
+    public void add(Disposable disposable){
         /*订阅管理*/
-        compositeSubscription.add(subscription);
+        compositeDisposable.add(disposable);
     }
 
 
@@ -54,8 +56,8 @@ public class RxManager {
      * 单个presenter生命周期结束，取消订阅和所有rxbus观察
      */
     public void clear(){
-        compositeSubscription.unsubscribe();
-        for (Map.Entry<String,Observable<?>> entry:mObservableMap.entrySet()) {
+        compositeDisposable.clear();
+        for (Map.Entry<String,Flowable<?>> entry:mObservableMap.entrySet()) {
             mRxbus.unRegister(entry.getKey(),entry.getValue());
         }
         
