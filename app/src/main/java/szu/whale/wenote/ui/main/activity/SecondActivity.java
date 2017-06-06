@@ -5,14 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 
 import szu.whale.wenote.R;
 
-public class MainActivity extends AppCompatActivity {
-    private String mString;
+public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mString = "hellow world";
     }
+
 
     @Override
     protected void onDestroy() {
