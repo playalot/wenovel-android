@@ -2,7 +2,6 @@ package szu.whale.wenote.app;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -109,7 +108,7 @@ public class RtHttp {
                 okBuilder.addInterceptor(new DynamicParameterIntercepter(dynamicParameterMap));
             }
 
-            if(Log.isDebuggable()){
+            if(ApiConfig.isDebug()){
                 okBuilder.addInterceptor(new LoggerIntercepter());
             }
             if(converterFactory!=null){

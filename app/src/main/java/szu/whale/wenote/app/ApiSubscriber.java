@@ -13,6 +13,7 @@ import java.text.ParseException;
 
 import retrofit2.HttpException;
 import rx.Subscriber;
+import szu.whale.wenote.util.CustomProgressDialog;
 import szu.whale.wenote.util.ToastUtil;
 
 
@@ -37,7 +38,7 @@ public abstract class ApiSubscriber<T> extends Subscriber<T> {
 
     private Context context;
     private boolean isShowWaitDialog;
-    private WaitDialog waitDialog;
+    private CustomProgressDialog waitDialog;
 
     public void setContext(Context context) {
         this.context = context;
@@ -48,11 +49,11 @@ public abstract class ApiSubscriber<T> extends Subscriber<T> {
     }
 
     private void showWaitDialog() {
-
+        waitDialog.show();
     }
 
     private void dissmissDialog() {
-
+        waitDialog.dismiss();
     }
 
     @Override
