@@ -1,0 +1,137 @@
+<resources>
+
+    <!-- dp = (px*1.125*160)/320 -->
+
+
+    <!-- 字体 -->
+    <dimen name="pxsp14">8sp</dimen>
+    <dimen name="pxsp16">9sp</dimen>
+    <dimen name="pxsp18">10sp</dimen>
+    <dimen name="pxsp20">11.25sp</dimen>
+    <dimen name="pxsp21">12sp</dimen>
+    <dimen name="pxsp22">12.375sp</dimen>
+    <dimen name="pxsp24">13.5sp</dimen>
+    <dimen name="pxsp26">14.625sp</dimen>
+    <dimen name="pxsp27">15sp</dimen>
+    <dimen name="pxsp28">15.75sp</dimen>
+    <dimen name="pxsp30">16.9sp</dimen>
+    <dimen name="pxsp32">18sp</dimen>
+    <dimen name="pxsp34">19.125sp</dimen>
+    <dimen name="pxsp36">20.25sp</dimen>
+    <dimen name="pxsp38">21.375sp</dimen>
+    <dimen name="pxsp40">22.5sp</dimen>
+    <dimen name="pxsp42">23.625sp</dimen>
+    <dimen name="pxsp48">27sp</dimen>
+    <dimen name="pxsp60">33.75sp</dimen>
+    <dimen name="pxsp68">38.25dp</dimen>
+
+    <!-- px值 -->
+    <dimen name="px1">0.5625dp</dimen>
+    <dimen name="px2">1.125dp</dimen>
+    <dimen name="px3">1.687dp</dimen>
+    <dimen name="px4">2.375dp</dimen>
+    <dimen name="px6">3.375dp</dimen>
+    <dimen name="px8">4.5dp</dimen>
+    <dimen name="px9">5dp</dimen>
+    <dimen name="px10">5.625dp</dimen>
+    <dimen name="px12">6.75dp</dimen>
+    <dimen name="px14">8dp</dimen>
+    <dimen name="px15">8.5dp</dimen>
+    <dimen name="px16">9dp</dimen>
+    <dimen name="px17">9.5dp</dimen>
+    <dimen name="px18">10.125dp</dimen>
+    <dimen name="px20">11.25dp</dimen>
+    <dimen name="px23">13dp</dimen>
+    <dimen name="px24">13.5dp</dimen>
+    <dimen name="px27">15dp</dimen>
+    <dimen name="px28">15.75dp</dimen>
+    <dimen name="px30">16.9dp</dimen>
+    <dimen name="px32">18dp</dimen>
+    <dimen name="px34">19.125dp</dimen>
+    <dimen name="px35">20dp</dimen>
+    <dimen name="px36">21dp</dimen>
+    <dimen name="px40">22.5dp</dimen>
+    <dimen name="px43">24.2dp</dimen>
+    <dimen name="px48">27dp</dimen>
+    <dimen name="px50">28dp</dimen>
+    <dimen name="px52">29dp</dimen>
+    <dimen name="px55">31dp</dimen>
+    <dimen name="px58">32.625dp</dimen>
+    <dimen name="px60">33.75dp</dimen>
+    <dimen name="px62">34dp</dimen>
+    <dimen name="px64">36dp</dimen>
+    <dimen name="px68">38.25dp</dimen>
+    <dimen name="px70">39dp</dimen>
+    <dimen name="px74">41.625dp</dimen>
+    <dimen name="px78">43.875dp</dimen>
+    <dimen name="px80">45dp</dimen>
+    <dimen name="px88">49.5dp</dimen>
+    <dimen name="px90">51.5dp</dimen>
+    <dimen name="px96">54.0dp</dimen>
+    <dimen name="px98">55.125dp</dimen>
+    <dimen name="px99">55.5dp</dimen>
+    <dimen name="px99.5">56dp</dimen>
+    <dimen name="px101">58dp</dimen>
+    <dimen name="px108">60.75dp</dimen>
+    <dimen name="px110">61.88dp</dimen>
+    <dimen name="px113">62.88dp</dimen>
+    <dimen name="px115.6">65dp</dimen>
+    <dimen name="px120">67.5dp</dimen>
+    <dimen name="px121">68dp</dimen>
+    <dimen name="px128">72.0dp</dimen>
+    <dimen name="px131">73.5dp</dimen>
+    <dimen name="px134">75.375dp</dimen>
+    <dimen name="px140">78.75dp</dimen>
+    <dimen name="px142">79.875dp</dimen>
+    <dimen name="px148">83.25dp</dimen>
+    <dimen name="px150">84.375dp</dimen>
+    <dimen name="px154">86.625dp</dimen>
+    <dimen name="px160">90dp</dimen>
+    <dimen name="px167">94dp</dimen>
+    <dimen name="px180">101.25dp</dimen>
+    <dimen name="px184">103.5dp</dimen>
+    <dimen name="px198">111.375dp</dimen>
+    <dimen name="px200">112.5dp</dimen>
+    <dimen name="px205">113.5dp</dimen>
+    <dimen name="px216">121.5dp</dimen>
+    <dimen name="px228">128.25dp</dimen>
+    <dimen name="px240">135dp</dimen>
+    <dimen name="px256">144dp</dimen>
+    <dimen name="px280">157.5dp</dimen>
+    <dimen name="px298">167dp</dimen>
+    <dimen name="px300">168.75dp</dimen>
+    <dimen name="dp180">180dp</dimen>
+    <dimen name="px340">191.25dp</dimen>
+    <dimen name="px380">214dp</dimen>
+    <dimen name="px400">225dp</dimen>
+    <dimen name="px425">239.0625dp</dimen>
+    <dimen name="px450">253.125dp</dimen>
+    <dimen name="px497">280dp</dimen>
+    <dimen name="px515">290dp</dimen>
+    <dimen name="px533">300dp</dimen>
+    <dimen name="px676">320dp</dimen>
+    <dimen name="px600">337.5dp</dimen>
+    <dimen name="px640">360.0dp</dimen>
+	<dimen name="menu_width">100dp</dimen>
+    <!-- 二维码扫描边框 -->
+    <dimen name="rect_width">24dp</dimen>
+    <dimen name="rect_height">2dp</dimen>
+
+    <!-- 圆形变框绘制角度 -->
+    <dimen name="round_radius">20dp</dimen>
+    <dimen name="round_radius_panel">3dp</dimen>
+
+    <dimen name="round_power_radius">5dp</dimen>
+    <dimen name="spacing_medium">30dp</dimen>
+    
+    <dimen name="halo_width">40dp</dimen>
+    
+   
+    <!--折线图矩形宽  -->
+    <dimen name="whale_chart_rect">13.5dp</dimen>
+    <dimen name="whale_chart_high_distance">30dp</dimen>
+
+    <dimen name="rippleStrokeWidth">2dp</dimen>
+    <dimen name="rippleRadius">64dp</dimen>
+
+</resources>

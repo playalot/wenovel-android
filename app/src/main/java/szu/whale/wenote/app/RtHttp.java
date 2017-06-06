@@ -47,7 +47,7 @@ public class RtHttp {
 
     public RtHttp subScriber(ApiSubscriber apiSubscriber){
         apiSubscriber.setContext(wrContext.get());
-        apiSubscriber.showDialog(isShowingDialog);
+        apiSubscriber.setIsShowWaitDialog(isShowingDialog);
         observable.subscribe(apiSubscriber);
         return instance;
     }
@@ -100,7 +100,7 @@ public class RtHttp {
                 rtBuilder.baseUrl(ApiConfig.getBaseUrl());
             }
             if(isAddSeesionId){
-                okBuilder.addInterceptor(HeaderIntercepter(wrContext.get()));
+                okBuilder.addInterceptor(new HeaderIntercepter(wrContext.get()));
             }
             if(isAddParameter){
                 okBuilder.addInterceptor(new ParameterIntercepter());
@@ -118,7 +118,7 @@ public class RtHttp {
                 rtBuilder.addConverterFactory(GsonConverterFactory.create());
             }
             rtBuilder.addCallAdapterFactory(RxJavaCallAdapterFactory.create()).client(okBuilder.build());
-            return rtBuilder.build().create(NetWorkApi.class);
+            return rtBuilder.build().create(NetworkApi.class);
         }
 
 
