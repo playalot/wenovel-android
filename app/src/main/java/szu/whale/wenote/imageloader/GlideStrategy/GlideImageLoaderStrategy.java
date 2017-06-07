@@ -63,7 +63,7 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy {
         } else if (mProgressId != -1) {
             load.placeholder(mProgressId);
         } else {
-            load.placeholder(R.drawable.img_default_loading);
+            load.placeholder(R.mipmap.img_default_loading);
         }
         if (errorId != -1) {
             load.error(errorId);

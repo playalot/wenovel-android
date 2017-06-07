@@ -13,7 +13,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * funtion :
+ * funtion :可以自己控制网络请求的线程以及发起请求的线程(主线程or子线程)
  * author  :smallbluewhale.
  * date    :2017/6/5 0005.
  * version :1.0.
@@ -30,6 +30,9 @@ public abstract class BaseApi {
         return RequestBody.create(MediaType.parse("application/json; charset=utf-8") , jsonObject.toString());
     }
 
+
+
+    //使用建造者模式在它的子类去生成一个不同的baseapi
     public static class ObservableBuilder{
         private Observable observable;
         private Scheduler observableScheduler;      //观察者所在的线程

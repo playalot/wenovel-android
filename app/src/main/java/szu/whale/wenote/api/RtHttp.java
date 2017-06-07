@@ -22,7 +22,7 @@ import rx.Observable;
 public class RtHttp {
 
     public static final String TAG = "RtHttp";
-    public static RtHttp instance = new RtHttp();           //单例饿汉模式
+    public static RtHttp instance = new RtHttp();           //单例饿汉模式 最简单的一种单例模式
     private Observable observable;
     private static WeakReference<Context> wrContext;
     private boolean isShowingDialog;
@@ -44,12 +44,18 @@ public class RtHttp {
         return instance;
     }
 
+
+    /*
+    * 在这里设置一个订阅者
+    * 能够显示dialog以及根据不同网络状态显示做出不同反应
+    * */
     public RtHttp subScriber(ApiSubscriber apiSubscriber){
         apiSubscriber.setContext(wrContext.get());
         apiSubscriber.setIsShowWaitDialog(isShowingDialog);
         observable.subscribe(apiSubscriber);
         return instance;
     }
+
 
     /*
     * 一个建造者模式的builder用来设置retrofit的builder以及okhttp的builder
@@ -108,7 +114,7 @@ public class RtHttp {
                 okBuilder.addInterceptor(new DynamicParameterIntercepter(dynamicParameterMap));
             }
 
-            if(ApiConfig.isDebug()){
+            if(!ApiConfig.isDebug()){
                 okBuilder.addInterceptor(new LoggerIntercepter());
             }
             if(converterFactory!=null){

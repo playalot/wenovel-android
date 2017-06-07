@@ -4,7 +4,7 @@ import rx.Observable;
 import rx.functions.Func1;
 
 /**
- * funtion :统一处理错误码code，并且将正确时候的data传给subscriber
+ * funtion :统一处理错误码code，并且正确时候的将data传给subscriber
  * author  :smallbluewhale.
  * date    :2017/6/5 0005.
  * version :1.0.
