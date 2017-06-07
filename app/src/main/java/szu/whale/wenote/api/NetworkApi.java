@@ -1,4 +1,4 @@
-package szu.whale.wenote.app;
+package szu.whale.wenote.api;
 
 import okhttp3.RequestBody;
 import retrofit2.http.Body;

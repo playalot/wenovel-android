@@ -1,4 +1,4 @@
-package szu.whale.wenote.app;
+package szu.whale.wenote.api;
 
 public class ResponStatusType {
     public static final String STATUS_OK = "0";

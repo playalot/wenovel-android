@@ -3,7 +3,7 @@
     package="szu.whale.wenote">
 
     <application
-        android:name=".app.WeNoteApplication"
+        android:name=".api.WeNoteApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

@@ -1,4 +1,4 @@
-package szu.whale.wenote.app;
+package szu.whale.wenote.api;
 
 import java.io.IOException;
 import java.util.HashMap;
