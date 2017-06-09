@@ -2,6 +2,10 @@ package szu.whale.wenote.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+
+import szu.whale.wenote.util.CustomProgressDialog;
 
 
 /**
@@ -46,7 +50,37 @@ import android.content.Context;
 //    }
 //}
 public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>> extends Activity implements BaseView  {
+
     protected P presenter;
+    private CustomProgressDialog customProgressDialog;
+
+
+    protected abstract int getLayoutId();
+
+    protected abstract void initPresenter();
+
+    /*
+    * 仅在这里做初始化操作
+    * */
+    protected abstract void init(Bundle savedInstanceState);
+
+
+    protected abstract P createPresenter();
+
+
+    public P getPresenter() {
+        return presenter;
+    }
+
+
+
+    /*
+    * 用来显示加载中的dialog
+    *
+    * */
+    public CustomProgressDialog getLoadingDialog(){
+        return customProgressDialog;
+    }
 
 
     @Override
@@ -77,5 +111,11 @@ public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>
     @Override
     public Context getContext() {
         return null;
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
     }
 }
