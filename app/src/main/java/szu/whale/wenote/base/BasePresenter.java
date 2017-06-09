@@ -27,6 +27,9 @@ public abstract class BasePresenter<V extends BaseView> {
         this.onStart();
     }
 
+    protected String getString(int resId){
+        return mView.get().getContext().getString(resId);
+    }
 
     public void onStart(){
 
