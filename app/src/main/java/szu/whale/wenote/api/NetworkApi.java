@@ -17,4 +17,5 @@ public interface NetworkApi {
     @POST("open/open.do")
     Observable<ResponseInfo<Object>>response(@Query("ACID") int acid , @Body RequestBody requestBody);
 
+
 }

@@ -27,8 +27,8 @@ public class HeaderIntercepter implements Interceptor {
         //get请求参数,在url后面去添加
         Request request = chain.request();
         Request.Builder builder = request
-                .newBuilder()
-                .header("sessionId" , "");
+                .newBuilder();
+//                .header("sessionId" , "");
         request = builder.build();
         return chain.proceed(request);
     }
