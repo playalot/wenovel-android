@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import butterknife.ButterKnife;
 import szu.whale.wenote.util.CustomProgressDialog;
 
 
@@ -52,23 +53,28 @@ import szu.whale.wenote.util.CustomProgressDialog;
 public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>> extends Activity implements BaseView  {
 
     protected P presenter;
+    private Context mContext;
+    private RxManager mRxManager;
     private CustomProgressDialog customProgressDialog;
 
 
     protected abstract int getLayoutId();
-
-    protected abstract void initPresenter();
 
     /*
     * 仅在这里做初始化操作
     * */
     protected abstract void init(Bundle savedInstanceState);
 
-
+    /*
+    * 不同的类需要创建自己的presenter
+    * */
     protected abstract P createPresenter();
 
 
-    public P getPresenter() {
+    protected P getPresenter() {
+        if(presenter == null){
+            presenter = createPresenter();
+        }
         return presenter;
     }
 
@@ -110,12 +116,28 @@ public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>
 
     @Override
     public Context getContext() {
-        return null;
+        return mContext;
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mRxManager = new RxManager();
+        mContext = this;
+        setContentView(getLayoutId());
+        ButterKnife.bind(this);
+        presenter = createPresenter();
+        if(presenter != null){
+            presenter.attachView((V)this);
+        }
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(presenter!=null){
+            presenter.detachView();
+            presenter.onDestory();
+        }
     }
 }

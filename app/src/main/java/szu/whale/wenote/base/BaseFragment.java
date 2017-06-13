@@ -6,10 +6,21 @@ package szu.whale.wenote.base;
  * date    :2017/4/11 0011.
  * version :1.0.
  * /
- /**
+ * /**
  * 基类
  */
- /***************使用例子*********************/
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import butterknife.ButterKnife;
+
+/***************使用例子*********************/
 //1.mvp模式
 //public class SampleFragment extends BaseFragment<NewsChanelPresenter, NewsChannelModel>implements NewsChannelContract.View {
 //    @Override
@@ -42,8 +53,39 @@ package szu.whale.wenote.base;
 //    }
 //}
 
-public abstract class BaseFragment<V extends BaseView , P extends BasePresenter<V>>implements BaseView {
-     private P presenter;
+public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V>> extends Fragment implements BaseView {
+    protected Context mContext;
+    protected RxManager mRxManager;
+    protected View mRootView;
+    private P presenter;
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (mRootView == null) {
+            mRootView = inflater.inflate(getLayoutID(), container, false);
+        }
+        mRxManager = new RxManager();
+        ButterKnife.bind(this, mRootView);
+        presenter = createPresenter();
+        return mRootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if(presenter!=null){
+            presenter.detachView();
+        }
+        mRxManager.clear();
+    }
+
+    protected P getPresenter(){
+        if(presenter == null){
+            presenter = createPresenter();
+        }
+        return presenter;
+    }
 
     @Override
     public void showLoading() {
@@ -70,6 +112,19 @@ public abstract class BaseFragment<V extends BaseView , P extends BasePresenter<
 
     }
 
+    /*
+    * 设置fragment的布局layout
+    * */
+    protected abstract int getLayoutID();
+
+    /*
+        * 不同activity实现不同presenter
+        * */
+    protected abstract P createPresenter();
+
+    /*
+    * class跳转
+    * */
 
 
 }

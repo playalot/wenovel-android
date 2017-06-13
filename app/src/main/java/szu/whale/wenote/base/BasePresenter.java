@@ -1,7 +1,5 @@
 package szu.whale.wenote.base;
 
-import android.content.Context;
-
 import java.lang.ref.WeakReference;
 
 
@@ -18,7 +16,6 @@ import java.lang.ref.WeakReference;
 
 public abstract class BasePresenter<V extends BaseView> {
 
-    private Context context;
     private RxManager mRxManager = new RxManager();
     private WeakReference<V> mView;                     //弱引用
 
@@ -39,6 +36,6 @@ public abstract class BasePresenter<V extends BaseView> {
     }
 
     public void detachView(){
-
+        mView = null;
     }
 }
