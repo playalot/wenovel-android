@@ -1,4 +1,4 @@
-package szu.whale.wenote.api;
+package szu.whale.wenote.api.Intercepter;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ import okhttp3.Response;
  * date    :2017/6/6 0006.
  * version :1.0.
  */
-class ParameterIntercepter implements Interceptor {
+public class ParameterIntercepter implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         //get请求参数,在url后面去添加

@@ -1,4 +1,4 @@
-package szu.whale.wenote.api;
+package szu.whale.wenote.api.Intercepter;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ import okhttp3.Response;
  * date    :2017/6/6 0006.
  * version :1.0.
  */
-class DynamicParameterIntercepter implements Interceptor {
+public class DynamicParameterIntercepter implements Interceptor {
 
     HashMap<String , String> map;
 

@@ -12,6 +12,10 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
+import szu.whale.wenote.api.Intercepter.DynamicParameterIntercepter;
+import szu.whale.wenote.api.Intercepter.HeaderIntercepter;
+import szu.whale.wenote.api.Intercepter.LoggerIntercepter;
+import szu.whale.wenote.api.Intercepter.ParameterIntercepter;
 
 /**
  * funtion :

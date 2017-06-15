@@ -5,7 +5,9 @@ import android.content.Context;
 import java.util.HashMap;
 
 import szu.whale.wenote.api.ApiSubscriber;
+import szu.whale.wenote.api.LoginEntity;
 import szu.whale.wenote.api.MobileApi;
+import szu.whale.wenote.api.ResponseInfo;
 import szu.whale.wenote.api.RtHttp;
 import szu.whale.wenote.base.BasePresenter;
 import szu.whale.wenote.module.login.contract.LoginContract;
@@ -35,9 +37,10 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
         /*
         * 调用model层来获取数据d
         * */
-        RtHttp.with(mContext).setDialog(true).setObservable(MobileApi.response(hashMap)).subScriber(new ApiSubscriber() {
+        RtHttp.with(mContext).setDialog(true).setObservable(MobileApi.response(hashMap)).subScriber(new ApiSubscriber<ResponseInfo<LoginEntity>>() {
+            //数据成功
             @Override
-            public void onNext(Object o) {
+            public void onNext(ResponseInfo<LoginEntity> result) {
 
             }
         });

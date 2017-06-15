@@ -1,4 +1,4 @@
-package szu.whale.wenote.api;
+package szu.whale.wenote.api.Intercepter;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -19,7 +19,7 @@ import okio.BufferedSource;
  * date    :2017/6/6 0006.
  * version :1.0.
  */
-class LoggerIntercepter implements Interceptor {
+public class LoggerIntercepter implements Interceptor {
 
     private static final String TAG = "LoggerIntercepter";
     private static final Charset UTF_8 = Charset.forName("UTF-8");
