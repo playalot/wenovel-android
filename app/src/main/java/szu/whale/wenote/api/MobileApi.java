@@ -33,13 +33,15 @@ public class MobileApi extends BaseApi {
     private static Observable getObservable(Observable observable){
         observable = new ObservableBuilder(observable)
                 .setAddApiException(true)
+//                .setObservableScheduler()
+//                .setSubscriberScheduler()
                 .build();
         return observable;
     }
 
-    public static Observable response(HashMap map , int protocoid){
+    public static Observable response(HashMap map){
         RequestBody requestBody = toBody(map);
-        return getObservable(getNetworkApi().response(protocoid , requestBody));
+        return getObservable(getNetworkApi().response(requestBody));
 
     }
 }

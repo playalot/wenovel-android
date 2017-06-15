@@ -63,12 +63,13 @@ public class RtHttp {
     * */
     public static class NetWorkApiBuilder{
         private String baseUrl;
-        private boolean isAddSeesionId;                         //是否加入sessionid
-        private boolean isAddParameter;                         //url添加固定参数
+//        private boolean isHttpsRequest;                      //是否是https网络协议
+        private boolean isAddSeesionId;                      //是否加入sessionid
+        private boolean isAddParameter;                      //url添加固定参数
         private HashMap<String,String> dynamicParameterMap;  //动态参数
         private Retrofit.Builder rtBuilder;
         private OkHttpClient.Builder okBuilder;
-        private Converter.Factory converterFactory;                      //用于类型转换的converter
+        private Converter.Factory converterFactory;          //用于类型转换的converter
 
 
         public NetWorkApiBuilder setBaseUrl(String baseUrl){
@@ -85,6 +86,12 @@ public class RtHttp {
             isAddParameter = true;
             return this;
         }
+        /*
+        public NetWorkApiBuilder setHttpsRequest(){
+            isHttpsRequest = true;
+            return this;
+        }
+        */
 
         public NetWorkApiBuilder setSessionId(){
             isAddSeesionId = true;
@@ -113,6 +120,9 @@ public class RtHttp {
             if(dynamicParameterMap!=null){
                 okBuilder.addInterceptor(new DynamicParameterIntercepter(dynamicParameterMap));
             }
+            /*if(isHttpsRequest){
+                okBuilder.addInterceptor(new HttpsRequestIntercepter());
+            }*/
 
             if(!ApiConfig.isDebug()){
                 okBuilder.addInterceptor(new LoggerIntercepter());

@@ -68,6 +68,9 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         mRxManager = new RxManager();
         ButterKnife.bind(this, mRootView);
         presenter = createPresenter();
+        if(presenter!=null){
+            presenter.attachView((V)this);
+        }
         return mRootView;
     }
 

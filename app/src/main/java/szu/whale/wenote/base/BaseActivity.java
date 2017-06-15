@@ -58,12 +58,20 @@ public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>
     private CustomProgressDialog customProgressDialog;
 
 
+
+    /**
+     * 指定Activity需加载的布局ID, {@link BaseActivity}BaseActivity
+     * 会通过{@link #setContentView}方法来加载布局
+     *
+     * @return 需加载的布局ID
+     */
     protected abstract int getLayoutId();
 
     /*
     * 仅在这里做初始化操作
     * */
     protected abstract void init(Bundle savedInstanceState);
+
 
     /*
     * 不同的类需要创建自己的presenter
@@ -77,7 +85,6 @@ public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>
         }
         return presenter;
     }
-
 
 
     /*
@@ -119,6 +126,7 @@ public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>
         return mContext;
     }
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,5 +147,6 @@ public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>
             presenter.detachView();
             presenter.onDestory();
         }
+        presenter = null;
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="szu.whale.wenote.ui.main.activity.MainActivity">
+    tools:context="szu.whale.wenote.module.login.activity.LoginActivity">
 
     <TextView
         android:id="@+id/tv_main"

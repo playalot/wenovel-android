@@ -21,8 +21,9 @@ class ParameterIntercepter implements Interceptor {
         HttpUrl httpUrl = request
                 .url()
                 .newBuilder()
-                .addQueryParameter("userid", "")
-                .addQueryParameter("cityid", "")
+                .addQueryParameter("channelID", "")
+                .addQueryParameter("clientID", "")
+                .addQueryParameter("revision", "")
                 .build();
         request = request.newBuilder().url(httpUrl).build();
         return chain.proceed(request);

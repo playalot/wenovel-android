@@ -3,7 +3,6 @@ package szu.whale.wenote.api;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -15,7 +14,6 @@ import rx.Observable;
 public interface NetworkApi {
 
     @POST("open/open.do")
-    Observable<ResponseInfo<Object>>response(@Query("ACID") int acid , @Body RequestBody requestBody);
-
+    Observable<ResponseInfo<Object>>response(@Body RequestBody requestBody);
 
 }
