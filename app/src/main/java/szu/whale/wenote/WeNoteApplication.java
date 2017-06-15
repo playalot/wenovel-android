@@ -1,4 +1,4 @@
-package szu.whale.wenote.api;
+package szu.whale.wenote;
 
 import android.app.Application;
 import android.content.Context;

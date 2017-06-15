@@ -8,7 +8,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * funtion :
+ * funtion :增加固定参数的拦截器
  * author  :smallbluewhale.
  * date    :2017/6/6 0006.
  * version :1.0.

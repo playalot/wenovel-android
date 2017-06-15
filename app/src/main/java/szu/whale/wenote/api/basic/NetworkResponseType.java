@@ -1,6 +1,6 @@
-package szu.whale.wenote.api;
+package szu.whale.wenote.api.basic;
 
-public class ResponStatusType {
+public class NetworkResponseType {
     public static final String STATUS_OK = "0";
     public static final String STATUS_Error = "-1";
 

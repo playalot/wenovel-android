@@ -13,19 +13,21 @@ import java.text.ParseException;
 
 import retrofit2.HttpException;
 import rx.Subscriber;
+import szu.whale.wenote.api.basic.NetworkException;
+import szu.whale.wenote.api.basic.NetworkResponseType;
 import szu.whale.wenote.util.CustomProgressDialog;
 import szu.whale.wenote.util.ToastUtil;
 
 
 /**
- * funtion :
+ * funtion :一个控制展示dialog以及错误控制的subscriber
  * author  :smallbluewhale.
  * date    :2017/6/5 0005.
  * version :1.0.
  */
-public abstract class ApiSubscriber<T> extends Subscriber<T> {
+public abstract class NetworkSubscriber<T> extends Subscriber<T> {
 
-    //对应HTTP的状态码
+    //对应HTTP的状态码,不是服務器状态码
     private static final int UNAUTHORIZED = 401;
     private static final int FORBIDDEN = 403;
     private static final int NOT_FOUND = 404;
@@ -119,8 +121,8 @@ public abstract class ApiSubscriber<T> extends Subscriber<T> {
             }
         }
         //服务器返回的错误码
-        else if (e instanceof ApiException) {
-            onNextError((ApiException) e);
+        else if (e instanceof NetworkException) {
+            onNextError((NetworkException) e);
         } else if (e instanceof JsonParseException || e instanceof ParseException || e instanceof JSONException) {
             ToastUtil.showMsgShort(context, "json解析错误");
         } else if (e instanceof UnknownHostException) {
@@ -134,12 +136,12 @@ public abstract class ApiSubscriber<T> extends Subscriber<T> {
     }
 
     //根据服务器返回的错误码来显示不同的toast
-    private void onNextError(ApiException e) {
+    private void onNextError(NetworkException e) {
         switch (e.getCode() + "") {
-            case ResponStatusType.STATUS_600211:
+            case NetworkResponseType.STATUS_600211:
                 ToastUtil.showMsgShort(context, "token已过期");
                 break;
-            case ResponStatusType.STATUS_6003:
+            case NetworkResponseType.STATUS_6003:
                 ToastUtil.showMsgShort(context, "暂无数据");
                 break;
             default:

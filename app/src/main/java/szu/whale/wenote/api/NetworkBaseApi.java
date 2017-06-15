@@ -18,7 +18,7 @@ import rx.schedulers.Schedulers;
  * date    :2017/6/5 0005.
  * version :1.0.
  */
-public abstract class BaseApi {
+public abstract class NetworkBaseApi {
 
     public static RequestBody toBody(HashMap hashMap){
         Gson gson = new Gson();
@@ -78,7 +78,7 @@ public abstract class BaseApi {
 
             }
             if(isAddApiException){
-                observable = observable.flatMap(new ApiErrorCodeExceptionFunc1());
+                observable = observable.flatMap(new NetworkErrorCodeFunc1());
             }
             if(observableScheduler!=null){
                 observable = observable.observeOn(observableScheduler);

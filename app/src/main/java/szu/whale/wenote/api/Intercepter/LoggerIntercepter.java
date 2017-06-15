@@ -14,7 +14,7 @@ import okio.Buffer;
 import okio.BufferedSource;
 
 /**
- * funtion :
+ * funtion :增加log信息的网络拦截器
  * author  :smallbluewhale.
  * date    :2017/6/6 0006.
  * version :1.0.

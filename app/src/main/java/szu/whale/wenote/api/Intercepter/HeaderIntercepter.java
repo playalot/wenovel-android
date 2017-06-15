@@ -9,7 +9,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * funtion :给url加上公共的请求头
+ * funtion :给url加上公共的请求头拦截器
  * author  :smallbluewhale.
  * date    :2017/6/6 0006.
  * version :1.0.

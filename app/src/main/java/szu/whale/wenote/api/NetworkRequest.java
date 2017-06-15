@@ -16,6 +16,8 @@ import szu.whale.wenote.api.Intercepter.DynamicParameterIntercepter;
 import szu.whale.wenote.api.Intercepter.HeaderIntercepter;
 import szu.whale.wenote.api.Intercepter.LoggerIntercepter;
 import szu.whale.wenote.api.Intercepter.ParameterIntercepter;
+import szu.whale.wenote.api.basic.NetworkConfig;
+import szu.whale.wenote.api.basic.INetworkApi;
 
 /**
  * funtion :
@@ -23,27 +25,27 @@ import szu.whale.wenote.api.Intercepter.ParameterIntercepter;
  * date    :2017/6/5 0005.
  * version :1.0.
  */
-public class RtHttp {
+public class NetworkRequest {
 
-    public static final String TAG = "RtHttp";
-    public static RtHttp instance = new RtHttp();           //单例饿汉模式 最简单的一种单例模式
+    public static final String TAG = "NetworkRequest";
+    public static NetworkRequest instance = new NetworkRequest();           //单例饿汉模式 最简单的一种单例模式
     private Observable observable;
     private static WeakReference<Context> wrContext;
     private boolean isShowingDialog;
 
 
-    public static RtHttp with(Context context){
+    public static NetworkRequest with(Context context){
         wrContext = new WeakReference<Context>(context);
         return instance;
     }
 
 
-    public RtHttp setDialog(boolean isShowingDialog){
+    public NetworkRequest setDialog(boolean isShowingDialog){
         this.isShowingDialog = isShowingDialog;
         return instance;
     }
 
-    public RtHttp setObservable(Observable observable){
+    public NetworkRequest setObservable(Observable observable){
         this.observable = observable;
         return instance;
     }
@@ -53,10 +55,10 @@ public class RtHttp {
     * 在这里设置一个订阅者
     * 能够显示dialog以及根据不同网络状态显示做出不同反应
     * */
-    public RtHttp subScriber(ApiSubscriber apiSubscriber){
-        apiSubscriber.setContext(wrContext.get());
-        apiSubscriber.setIsShowWaitDialog(isShowingDialog);
-        observable.subscribe(apiSubscriber);
+    public NetworkRequest subScriber(NetworkSubscriber networkSubscriber){
+        networkSubscriber.setContext(wrContext.get());
+        networkSubscriber.setIsShowWaitDialog(isShowingDialog);
+        observable.subscribe(networkSubscriber);
         return instance;
     }
 
@@ -107,13 +109,13 @@ public class RtHttp {
             return this;
         }
 
-        public NetworkApi build(){
+        public INetworkApi build(){
             rtBuilder = new Retrofit.Builder();
             okBuilder = new OkHttpClient.Builder();
             if(!TextUtils.isEmpty(baseUrl)){
                 rtBuilder.baseUrl(baseUrl);
             }else{
-                rtBuilder.baseUrl(ApiConfig.getBaseUrl());
+                rtBuilder.baseUrl(NetworkConfig.getBaseUrl());
             }
             if(isAddSeesionId){
                 okBuilder.addInterceptor(new HeaderIntercepter(wrContext.get()));
@@ -128,7 +130,7 @@ public class RtHttp {
                 okBuilder.addInterceptor(new HttpsRequestIntercepter());
             }*/
 
-            if(!ApiConfig.isDebug()){
+            if(!NetworkConfig.isDebug()){
                 okBuilder.addInterceptor(new LoggerIntercepter());
             }
             if(converterFactory!=null){
@@ -137,7 +139,7 @@ public class RtHttp {
                 rtBuilder.addConverterFactory(GsonConverterFactory.create());
             }
             rtBuilder.addCallAdapterFactory(RxJavaCallAdapterFactory.create()).client(okBuilder.build());
-            return rtBuilder.build().create(NetworkApi.class);
+            return rtBuilder.build().create(INetworkApi.class);
         }
 
 

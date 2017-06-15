@@ -1,4 +1,4 @@
-package szu.whale.wenote.api;
+package szu.whale.wenote.api.basic;
 
 /**
  * funtion :实体类,后台返回的数据实体

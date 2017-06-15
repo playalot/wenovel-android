@@ -1,12 +1,12 @@
-package szu.whale.wenote.api;
+package szu.whale.wenote.api.basic;
 
 /**
- * funtion :
+ * funtion :配置log信息以及基本配置信息
  * author  :smallbluewhale.
  * date    :2017/6/5 0005.
  * version :1.0.
  */
-public class ApiConfig {
+public class NetworkConfig {
     private static boolean isDebug = false;
     public static final String baseUrl = "52.197.229.254:4400";
 
