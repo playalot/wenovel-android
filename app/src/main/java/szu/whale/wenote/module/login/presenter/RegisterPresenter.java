@@ -38,7 +38,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View> impl
         * 调用model层来获取数据d
         * */
         NetworkRequest.with(mContext)
-                .setShowingDialog(false)
+                .setShowingDialog()
                 .setObservable(NetworkApi.register(hashMap))
                 .subScriber(new NetworkSubscriber<ResponseInfo<User>>() {
                     //数据成功

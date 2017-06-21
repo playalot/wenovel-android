@@ -40,8 +40,8 @@ public class NetworkRequest {
     }
 
 
-    public NetworkRequest setShowingDialog(boolean isShowingDialog){
-        this.isShowingDialog = isShowingDialog;
+    public NetworkRequest setShowingDialog(){
+        this.isShowingDialog = true;
         return instance;
     }
 
@@ -84,8 +84,8 @@ public class NetworkRequest {
             return this;
         }
 
-        public NetWorkApiBuilder setEncryption(boolean isEncryption){
-            this.isEncryption = isEncryption;
+        public NetWorkApiBuilder setEncryption(){
+            this.isEncryption = true;
             return this;
         }
 
