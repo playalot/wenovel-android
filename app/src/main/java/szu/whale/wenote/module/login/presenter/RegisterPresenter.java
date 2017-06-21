@@ -27,7 +27,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View> impl
 
 
     @Override
-    public void login(String userName, String passWord) {
+    public void register(String userName, String passWord) {
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("mobile", "17607557882");
         hashMap.put("checkCode", "7368");

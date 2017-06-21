@@ -10,7 +10,7 @@ import szu.whale.wenote.base.BaseView;
          */
 public interface RegisterContract {
     interface Presenter {
-        void login(String mobile , String passWord);
+        void register(String mobile , String passWord);
     }
 
     interface View extends BaseView{

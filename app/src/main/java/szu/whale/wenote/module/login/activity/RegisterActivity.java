@@ -19,7 +19,7 @@ public class RegisterActivity extends BaseActivity<RegisterContract.View,Registe
     protected void init(Bundle savedInstanceState) {
         String mobile = "15889680545";
         String passWord = "Q4561210q";
-        presenter.login(mobile,passWord);
+        presenter.register(mobile,passWord);
     }
 
     @Override
