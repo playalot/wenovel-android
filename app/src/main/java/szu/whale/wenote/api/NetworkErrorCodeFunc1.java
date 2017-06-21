@@ -17,8 +17,8 @@ public class NetworkErrorCodeFunc1<T> implements Func1<ResponseInfo<T>, Observab
     public Observable<T> call(ResponseInfo<T> responseInfo) {
         //0是正确标识码
         //自己根据服务器的错误码显示不同的错误信息
-        if(!NetworkResponseType.STATUS_OK.equals(responseInfo.getCode())){
-            return Observable.error(new NetworkException(responseInfo.getCode() , responseInfo.getMessage()));
+        if(!NetworkResponseType.STATUS_OK.equals(responseInfo.getStatus())){
+            return Observable.error(new NetworkException(responseInfo.getStatus() , responseInfo.getMsg()));
         }
         return Observable.just(responseInfo.getData());
     }

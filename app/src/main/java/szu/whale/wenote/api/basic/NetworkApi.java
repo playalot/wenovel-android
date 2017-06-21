@@ -34,7 +34,7 @@ public class NetworkApi extends NetworkBaseApi {
                 encryptionINetworkApi = new NetworkRequest.NetWorkApiBuilder()
                         .setSessionId()         //设置sessionid
                         .setParameter()         //設置參數
-                        .setEncryption(true)    //设置加密
+                        .setEncryption()    //设置加密
                         .build();
             }
             return encryptionINetworkApi;
