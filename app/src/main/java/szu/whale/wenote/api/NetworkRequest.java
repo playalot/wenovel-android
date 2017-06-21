@@ -41,7 +41,7 @@ public class NetworkRequest {
 
 
     public NetworkRequest setShowingDialog(){
-        this.isShowingDialog = true;
+        this.isShowingDialog = false;
         return instance;
     }
 
