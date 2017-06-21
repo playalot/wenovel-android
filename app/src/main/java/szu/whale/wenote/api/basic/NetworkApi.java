@@ -15,21 +15,34 @@ import szu.whale.wenote.api.NetworkRequest;
  */
 public class NetworkApi extends NetworkBaseApi {
 
-    private static INetworkApi INetworkApi;
+    private static INetworkApi encryptionINetworkApi;
+    private static INetworkApi iNetworkApi;
     private static Observable observable;
 
-    public static INetworkApi getINetworkApi(){
-        if(INetworkApi == null){
-            INetworkApi = new NetworkRequest.NetWorkApiBuilder()
-                    .setSessionId()
-                    .setParameter()
-                    .build();
+    public static INetworkApi getINetworkApi(boolean isEncryption){
+        //請求提是否加密
+        if(!isEncryption) {
+            if (iNetworkApi == null) {
+                iNetworkApi = new NetworkRequest.NetWorkApiBuilder()
+                        .setSessionId()         //设置sessionid
+                        .setParameter()         //设置固定参数
+                        .build();
+            }
+            return iNetworkApi;
+        }else{
+            if(encryptionINetworkApi == null){
+                encryptionINetworkApi = new NetworkRequest.NetWorkApiBuilder()
+                        .setSessionId()         //设置sessionid
+                        .setParameter()         //設置參數
+                        .setEncryption(true)    //设置加密
+                        .build();
+            }
+            return encryptionINetworkApi;
         }
-        return INetworkApi;
     }
 
 
-    /** 在这里可以指定observable发起的线程
+    /** 在这里可以指定observable1发起的线程
     *** 也可以指定subscriber调度的线程
     ***/
     private static Observable getObservable(Observable observable){
@@ -41,9 +54,10 @@ public class NetworkApi extends NetworkBaseApi {
         return observable;
     }
 
+
+
     public static Observable response(HashMap map){
         RequestBody requestBody = toBody(map);
-        return getObservable(getINetworkApi().response(requestBody));
-
+        return getObservable(getINetworkApi(false).response(requestBody));
     }
 }

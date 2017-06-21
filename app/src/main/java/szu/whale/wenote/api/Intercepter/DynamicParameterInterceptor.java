@@ -16,11 +16,11 @@ import okhttp3.Response;
  * date    :2017/6/6 0006.
  * version :1.0.
  */
-public class DynamicParameterIntercepter implements Interceptor {
+public class DynamicParameterInterceptor implements Interceptor {
 
     HashMap<String , String> map;
 
-    public DynamicParameterIntercepter(HashMap<String, String> dynamicParameterMap) {
+    public DynamicParameterInterceptor(HashMap<String, String> dynamicParameterMap) {
             this.map = dynamicParameterMap;
     }
 

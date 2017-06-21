@@ -12,7 +12,6 @@ public class LoginActivity extends BaseActivity<LoginContract.View,LoginPresente
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
         mString = "hellow world";
     }
 
@@ -33,7 +32,7 @@ public class LoginActivity extends BaseActivity<LoginContract.View,LoginPresente
 
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.activity_login;
     }
 
     @Override

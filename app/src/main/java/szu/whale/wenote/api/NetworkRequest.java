@@ -12,10 +12,11 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
-import szu.whale.wenote.api.Intercepter.DynamicParameterIntercepter;
-import szu.whale.wenote.api.Intercepter.HeaderIntercepter;
-import szu.whale.wenote.api.Intercepter.LoggerIntercepter;
-import szu.whale.wenote.api.Intercepter.ParameterIntercepter;
+import szu.whale.wenote.api.Intercepter.DynamicParameterInterceptor;
+import szu.whale.wenote.api.Intercepter.EncryptionInterceptor;
+import szu.whale.wenote.api.Intercepter.HeaderInterceptor;
+import szu.whale.wenote.api.Intercepter.LoggerInterceptor;
+import szu.whale.wenote.api.Intercepter.ParameterInterceptor;
 import szu.whale.wenote.api.basic.NetworkConfig;
 import szu.whale.wenote.api.basic.INetworkApi;
 
@@ -33,14 +34,13 @@ public class NetworkRequest {
     private static WeakReference<Context> wrContext;
     private boolean isShowingDialog;
 
-
     public static NetworkRequest with(Context context){
         wrContext = new WeakReference<Context>(context);
         return instance;
     }
 
 
-    public NetworkRequest setDialog(boolean isShowingDialog){
+    public NetworkRequest setShowingDialog(boolean isShowingDialog){
         this.isShowingDialog = isShowingDialog;
         return instance;
     }
@@ -70,6 +70,7 @@ public class NetworkRequest {
     public static class NetWorkApiBuilder{
         private String baseUrl;
 //        private boolean isHttpsRequest;                      //是否是https网络协议
+        private boolean isEncryption;                        //是否加密
         private boolean isAddSeesionId;                      //是否加入sessionid
         private boolean isAddParameter;                      //url添加固定参数
         private HashMap<String,String> dynamicParameterMap;  //动态参数
@@ -83,6 +84,11 @@ public class NetworkRequest {
             return this;
         }
 
+        public NetWorkApiBuilder setEncryption(boolean isEncryption){
+            this.isEncryption = isEncryption;
+            return this;
+        }
+
         public NetWorkApiBuilder setConverterFactory(Converter.Factory converterFactory){
             this.converterFactory = converterFactory;
             return this;
@@ -92,12 +98,6 @@ public class NetworkRequest {
             isAddParameter = true;
             return this;
         }
-        /*
-        public NetWorkApiBuilder setHttpsRequest(){
-            isHttpsRequest = true;
-            return this;
-        }
-        */
 
         public NetWorkApiBuilder setSessionId(){
             isAddSeesionId = true;
@@ -117,21 +117,24 @@ public class NetworkRequest {
             }else{
                 rtBuilder.baseUrl(NetworkConfig.getBaseUrl());
             }
+            if(isEncryption){
+                okBuilder.addInterceptor(new EncryptionInterceptor());
+            }
             if(isAddSeesionId){
-                okBuilder.addInterceptor(new HeaderIntercepter(wrContext.get()));
+                okBuilder.addInterceptor(new HeaderInterceptor(wrContext.get()));
             }
             if(isAddParameter){
-                okBuilder.addInterceptor(new ParameterIntercepter());
+                okBuilder.addInterceptor(new ParameterInterceptor());
             }
             if(dynamicParameterMap!=null){
-                okBuilder.addInterceptor(new DynamicParameterIntercepter(dynamicParameterMap));
+                okBuilder.addInterceptor(new DynamicParameterInterceptor(dynamicParameterMap));
             }
             /*if(isHttpsRequest){
                 okBuilder.addInterceptor(new HttpsRequestIntercepter());
             }*/
 
             if(!NetworkConfig.isDebug()){
-                okBuilder.addInterceptor(new LoggerIntercepter());
+                okBuilder.addInterceptor(new LoggerInterceptor());
             }
             if(converterFactory!=null){
                 rtBuilder.addConverterFactory(converterFactory);

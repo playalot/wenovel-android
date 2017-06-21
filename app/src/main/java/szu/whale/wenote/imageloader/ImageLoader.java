@@ -52,7 +52,9 @@ public class ImageLoader {
         }
     }
 
-
+    /*
+    * 在这里设置图片加载库的类型
+    * */
     private static BaseImageLoaderStrategy getBaseImageLoaderStrategy() {
         if (baseImageLoaderStrategy == null) {
             synchronized (ImageLoader.class) {

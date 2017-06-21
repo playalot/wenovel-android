@@ -3,7 +3,7 @@ package szu.whale.wenote.util;
 import android.text.TextUtils;
 import android.util.Base64;
 
-public class StringUtils extends Base {
+public class StringUtils {
 
     /**
      * 空检测 空返true

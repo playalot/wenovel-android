@@ -15,13 +15,13 @@ import okio.BufferedSource;
 
 /**
  * funtion :增加log信息的网络拦截器
- * author  :smallbluewhale.
+- * author  :smallbluewhale.
  * date    :2017/6/6 0006.
  * version :1.0.
  */
-public class LoggerIntercepter implements Interceptor {
+public class LoggerInterceptor implements Interceptor {
 
-    private static final String TAG = "LoggerIntercepter";
+    private static final String TAG = "LoggerInterceptor";
     private static final Charset UTF_8 = Charset.forName("UTF-8");
 
 

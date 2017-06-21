@@ -8,14 +8,14 @@ package szu.whale.wenote.api.basic;
  */
 public class NetworkException extends Exception {
 
-    private int code;
+    private String code;
 
-    public NetworkException(int code , String errorMessage){
+    public NetworkException(String code , String errorMessage){
         super(errorMessage);
         this.code = code;
     }
 
-    public int getCode(){
+    public String getCode(){
         return this.code;
     }
 }

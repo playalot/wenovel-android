@@ -8,7 +8,8 @@ package szu.whale.wenote.api.basic;
  */
 public class NetworkConfig {
     private static boolean isDebug = false;
-    public static final String baseUrl = "52.197.229.254:4400";
+    //服务器地址
+    private static final String baseUrl = "https://mobileif.maizuo.com";//online
 
     public static boolean isDebug() {
         return isDebug;

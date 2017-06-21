@@ -6,6 +6,7 @@ import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
+import szu.whale.wenote.util.ClientInfoUtils;
 
 /**
  * funtion :增加固定参数的拦截器
@@ -13,7 +14,7 @@ import okhttp3.Response;
  * date    :2017/6/6 0006.
  * version :1.0.
  */
-public class ParameterIntercepter implements Interceptor {
+public class ParameterInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         //get请求参数,在url后面去添加
@@ -21,9 +22,9 @@ public class ParameterIntercepter implements Interceptor {
         HttpUrl httpUrl = request
                 .url()
                 .newBuilder()
-                .addQueryParameter("channelID", "")
-                .addQueryParameter("clientID", "")
-                .addQueryParameter("revision", "")
+                .addQueryParameter("channelID", ClientInfoUtils.getInstance().ChannelId)
+                .addQueryParameter("clientID", ClientInfoUtils.getInstance().ClientId)
+                .addQueryParameter("revision", ClientInfoUtils.getInstance().versionName)
                 .build();
         request = request.newBuilder().url(httpUrl).build();
         return chain.proceed(request);

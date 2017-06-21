@@ -14,11 +14,11 @@ import okhttp3.Response;
  * date    :2017/6/6 0006.
  * version :1.0.
  */
-public class HeaderIntercepter implements Interceptor {
+public class HeaderInterceptor implements Interceptor {
 
     private Context context;
 
-    public HeaderIntercepter(Context context) {
+    public HeaderInterceptor(Context context) {
         this.context = context;
     }
 

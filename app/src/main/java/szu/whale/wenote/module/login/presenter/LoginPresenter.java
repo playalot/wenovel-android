@@ -37,7 +37,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
         /*
         * 调用model层来获取数据d
         * */
-        NetworkRequest.with(mContext).setDialog(true).setObservable(NetworkApi.response(hashMap)).subScriber(new NetworkSubscriber<ResponseInfo<LoginEntity>>() {
+        NetworkRequest.with(mContext).setShowingDialog(true).setObservable(NetworkApi.response(hashMap)).subScriber(new NetworkSubscriber<ResponseInfo<LoginEntity>>() {
             //数据成功
             @Override
             public void onNext(ResponseInfo<LoginEntity> result) {

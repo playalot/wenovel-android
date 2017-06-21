@@ -13,7 +13,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * funtion :可以自己控制网络请求的线程以及发起请求的线程(主线程or子线程)
+ * funtion :可以自己控制网络请求的线程以及发起请求的线程(主线程or子线程)并且在这里可以对数据进行加密解密
  * author  :smallbluewhale.
  * date    :2017/6/5 0005.
  * version :1.0.
