@@ -138,6 +138,7 @@ public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>
         if(presenter != null){
             presenter.attachView((V)this);
         }
+        init(savedInstanceState);
     }
 
     @Override

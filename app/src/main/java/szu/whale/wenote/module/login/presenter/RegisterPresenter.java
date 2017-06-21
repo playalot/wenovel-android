@@ -4,13 +4,13 @@ import android.content.Context;
 
 import java.util.HashMap;
 
-import szu.whale.wenote.api.NetworkSubscriber;
-import szu.whale.wenote.module.login.entity.LoginEntity;
-import szu.whale.wenote.api.basic.NetworkApi;
 import szu.whale.wenote.api.NetworkRequest;
+import szu.whale.wenote.api.NetworkSubscriber;
+import szu.whale.wenote.api.basic.NetworkApi;
 import szu.whale.wenote.api.basic.ResponseInfo;
 import szu.whale.wenote.base.BasePresenter;
-import szu.whale.wenote.module.login.contract.LoginContract;
+import szu.whale.wenote.module.login.contract.RegisterContract;
+import szu.whale.wenote.module.login.entity.User;
 
 
 /**
@@ -19,31 +19,33 @@ import szu.whale.wenote.module.login.contract.LoginContract;
  * date    :2017/6/14 0014.
  * version :1.0.
  */
-public class LoginPresenter extends BasePresenter<LoginContract.View> implements LoginContract.Presenter {
+public class RegisterPresenter extends BasePresenter<RegisterContract.View> implements RegisterContract.Presenter {
 
-    public LoginPresenter(Context context){
+    public RegisterPresenter(Context context) {
         this.mContext = context;
     }
 
 
     @Override
     public void login(String userName, String passWord) {
-        HashMap<String , String> hashMap = null;
-        hashMap.put("userName",userName);
-        hashMap.put("passWord",passWord);
-        if (!checkUserInput(userName, passWord)) return;
-
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("mobile", "17607557882");
+        hashMap.put("checkCode", "7368");
+        hashMap.put("password", "Q4561210q");
+        hashMap.put("cityId", "10");
         mView.get().showLoading();
         /*
         * 调用model层来获取数据d
         * */
-        NetworkRequest.with(mContext).setShowingDialog(true).setObservable(NetworkApi.response(hashMap)).subScriber(new NetworkSubscriber<ResponseInfo<LoginEntity>>() {
-            //数据成功
-            @Override
-            public void onNext(ResponseInfo<LoginEntity> result) {
-
-            }
-        });
+        NetworkRequest.with(mContext)
+                .setShowingDialog(false)
+                .setObservable(NetworkApi.register(hashMap))
+                .subScriber(new NetworkSubscriber<ResponseInfo<User>>() {
+                    //数据成功
+                    @Override
+                    public void onNext(ResponseInfo<User> result) {
+                    }
+                });
     }
 
 

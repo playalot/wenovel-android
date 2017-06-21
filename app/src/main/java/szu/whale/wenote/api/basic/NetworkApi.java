@@ -56,8 +56,10 @@ public class NetworkApi extends NetworkBaseApi {
 
 
 
-    public static Observable response(HashMap map){
+    public static Observable register(HashMap<String,String> map){
         RequestBody requestBody = toBody(map);
-        return getObservable(getINetworkApi(false).response(requestBody));
+        return getObservable(getINetworkApi(true).register(requestBody));
     }
+
+
 }

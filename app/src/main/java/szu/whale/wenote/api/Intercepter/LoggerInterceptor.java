@@ -15,7 +15,7 @@ import okio.BufferedSource;
 
 /**
  * funtion :增加log信息的网络拦截器
-- * author  :smallbluewhale.
+ * - * author  :smallbluewhale.
  * date    :2017/6/6 0006.
  * version :1.0.
  */
@@ -24,21 +24,30 @@ public class LoggerInterceptor implements Interceptor {
     private static final String TAG = "LoggerInterceptor";
     private static final Charset UTF_8 = Charset.forName("UTF-8");
 
+    private static String bodyToString(final RequestBody requestBody) {
+        try {
+            final Buffer buffer = new Buffer();
+            requestBody.writeTo(buffer);
+            return buffer.readUtf8();
+        } catch (final IOException e) {
+            return "did not work";
+        }
+    }
 
     @Override
     public Response intercept(Chain chain) throws IOException {
-        Log.d(TAG , "Request");
+        Log.d(TAG, "Request");
         Request request = chain.request();
         Response response;
-        try{
+        try {
             long starTime = System.nanoTime();
             response = chain.proceed(request);
-            long endTime  = System.nanoTime();
+            long endTime = System.nanoTime();
             double interval = (endTime - starTime) / 1e6d;
             String acid = request.url().queryParameter("acid");        //项目中请求头信息参数
             String userID = request.url().queryParameter("userid");    //userid信息
             String type = "";
-            switch (request.method()){
+            switch (request.method()) {
                 case "GET":
                     type = "GET";
                     break;
@@ -66,19 +75,10 @@ public class LoggerInterceptor implements Interceptor {
                     .concat("\nrequest headers->").concat(request.headers() + "")
                     .concat("request->").concat(bodyToString(request.body()))
                     .concat("\nbody->").concat(buffer.clone().readString(UTF_8));
-        }catch (Exception e){
+            Log.e("请求内容", logStr);
+        } catch (Exception e) {
             throw e;
         }
         return chain.proceed(request);
-    }
-
-    private static String bodyToString(final RequestBody requestBody){
-        try{
-            final Buffer buffer = new Buffer();
-            requestBody.writeTo(buffer);
-            return buffer.readUtf8();
-        }catch (final IOException e){
-            return "did not work";
-        }
     }
 }

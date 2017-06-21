@@ -1,16 +1,34 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
 
+ext {
+    // 默认版本号
+    appVersionCode = Config_appversionCode as int
+    // 默认版本名
+    appVersionName = Config_appversionName
+    // 默认apk输出路径
+    appReleaseDir = Config_appReleaseDir
+    // 默认Umeng渠道
+    appUmengChannel = Config_umeng_chennel
+    // 1普通打包   2 Patch打包（Tinker）
+    isappPackageRelease = Config_appPackageType //true as boolean
+}
 
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a'//, 'x86_64', 'arm64-v8a'
+        }
         applicationId "szu.whale.wenote"
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        multiDexEnabled true
+        minSdkVersion Config_minSdkVersion as int
+        targetSdkVersion Config_targetSdkVersion as int
+        versionCode appVersionCode
+        versionName appVersionName
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: appUmengChannel]
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

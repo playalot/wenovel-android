@@ -4,6 +4,7 @@ import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import rx.Observable;
+import szu.whale.wenote.module.login.entity.User;
 
 /**
  * funtion :
@@ -13,7 +14,8 @@ import rx.Observable;
  */
 public interface INetworkApi {
 
-    @POST("open/open.do")
-    Observable<ResponseInfo<Object>>response(@Body RequestBody requestBody);
+    @POST("ver4/user/register/v2")
+    Observable<ResponseInfo<User>> register(@Body RequestBody requestBody);
+
 
 }

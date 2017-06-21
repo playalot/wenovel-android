@@ -8,9 +8,9 @@ import szu.whale.wenote.base.BaseView;
          * date    :2017/6/13 0013.
          * version :1.0.
          */
-public interface LoginContract {
+public interface RegisterContract {
     interface Presenter {
-        void login(String userName , String passWord);
+        void login(String mobile , String passWord);
     }
 
     interface View extends BaseView{

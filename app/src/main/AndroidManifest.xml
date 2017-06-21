@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="szu.whale.wenote">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".WeNoteApplication"
         android:allowBackup="true"
@@ -13,7 +15,7 @@
         <!-- 自定义module-->
         <meta-data android:name="szu.whale.wenote.imageloader.ImageCache"
         android:value="GlideModule"/>
-        <activity android:name=".module.login.activity.LoginActivity">
+        <activity android:name=".module.login.activity.RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
