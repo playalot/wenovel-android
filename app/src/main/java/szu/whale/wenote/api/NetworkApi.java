@@ -1,4 +1,4 @@
-package szu.whale.wenote.api.basic;
+package szu.whale.wenote.api;
 
 import java.util.HashMap;
 

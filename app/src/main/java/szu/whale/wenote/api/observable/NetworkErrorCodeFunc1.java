@@ -1,4 +1,4 @@
-package szu.whale.wenote.api;
+package szu.whale.wenote.api.observable;
 
 import rx.Observable;
 import rx.functions.Func1;

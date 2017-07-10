@@ -14,7 +14,7 @@ import szu.whale.wenote.api.Intercepter.EncryptionInterceptor;
 import szu.whale.wenote.api.Intercepter.HeaderInterceptor;
 import szu.whale.wenote.api.Intercepter.LoggerInterceptor;
 import szu.whale.wenote.api.Intercepter.ParameterInterceptor;
-import szu.whale.wenote.api.basic.INetworkApi;
+import szu.whale.wenote.api.INetworkApi;
 import szu.whale.wenote.api.basic.NetworkConfig;
 
 /**

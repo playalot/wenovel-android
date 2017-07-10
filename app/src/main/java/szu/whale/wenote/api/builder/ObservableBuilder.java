@@ -4,7 +4,7 @@ import rx.Observable;
 import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-import szu.whale.wenote.api.NetworkErrorCodeFunc1;
+import szu.whale.wenote.api.observable.NetworkErrorCodeFunc1;
 
 /**
  * funtion :通过原来的observable来构建一个新observable，改变所在调用的线程。
@@ -58,7 +58,7 @@ public class ObservableBuilder {
 
             }
             if (isAddApiException) {
-                observable = observable.flatMap(new NetworkErrorCodeFunc1());
+                observable = observable.flatMap(new NetworkErrorCodeFunc1()); //将返回的
             }
             if (observableScheduler != null) {
                 observable = observable.observeOn(observableScheduler);

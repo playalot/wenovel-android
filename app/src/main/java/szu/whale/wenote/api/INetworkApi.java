@@ -1,9 +1,10 @@
-package szu.whale.wenote.api.basic;
+package szu.whale.wenote.api;
 
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import rx.Observable;
+import szu.whale.wenote.api.basic.ResponseInfo;
 import szu.whale.wenote.module.login.entity.User;
 
 /**

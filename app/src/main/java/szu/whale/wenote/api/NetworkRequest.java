@@ -5,6 +5,7 @@ import android.content.Context;
 import java.lang.ref.WeakReference;
 
 import rx.Observable;
+import szu.whale.wenote.api.subscriber.NetworkSubscriber;
 
 /**
  * funtion :

@@ -5,8 +5,8 @@ import android.content.Context;
 import java.util.HashMap;
 
 import szu.whale.wenote.api.NetworkRequest;
-import szu.whale.wenote.api.NetworkSubscriber;
-import szu.whale.wenote.api.basic.NetworkApi;
+import szu.whale.wenote.api.subscriber.NetworkSubscriber;
+import szu.whale.wenote.api.NetworkApi;
 import szu.whale.wenote.api.basic.ResponseInfo;
 import szu.whale.wenote.base.BasePresenter;
 import szu.whale.wenote.module.login.contract.RegisterContract;
