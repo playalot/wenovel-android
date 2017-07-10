@@ -31,6 +31,18 @@ public abstract class BasePresenter<V extends BaseView> {
         return mView.get().getContext().getString(resId);
     }
 
+    /**
+     * 获取当前的VIEW弱引用（Activity/Fragment）
+     */
+    public V getView() {
+        if (mView == null) {
+            return null;
+        } else {
+            return mView.get();
+        }
+    }
+
+
     public void onStart(){
 
     }

@@ -44,6 +44,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View> impl
                     //数据成功
                     @Override
                     public void onNext(ResponseInfo<User> result) {
+
                     }
                 });
     }

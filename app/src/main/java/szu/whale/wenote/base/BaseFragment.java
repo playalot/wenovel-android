@@ -9,7 +9,6 @@ package szu.whale.wenote.base;
  * /**
  * 基类
  */
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -45,7 +44,8 @@ import butterknife.ButterKnife;
 //    }
 //
 //    @Override
-//    public void initPresenter() {
+//    public P createPresenter() {
+//    return null;
 //    }
 //
 //    @Override
@@ -68,7 +68,7 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         mRxManager = new RxManager();
         ButterKnife.bind(this, mRootView);
         presenter = createPresenter();
-        if(presenter!=null){
+        if(presenter != null){
             presenter.attachView((V)this);
         }
         return mRootView;
@@ -124,10 +124,5 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         * 不同activity实现不同presenter
         * */
     protected abstract P createPresenter();
-
-    /*
-    * class跳转
-    * */
-
 
 }

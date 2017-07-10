@@ -18,10 +18,6 @@ public class HeaderInterceptor implements Interceptor {
 
     private Context context;
 
-    public HeaderInterceptor(Context context) {
-        this.context = context;
-    }
-
     @Override
     public Response intercept(Chain chain) throws IOException {
         //get请求参数,在url后面去添加
